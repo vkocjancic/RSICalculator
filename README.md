@@ -1,0 +1,2 @@
+# RSICalculator
+RSI calculator library

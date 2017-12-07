@@ -12,7 +12,7 @@ var differences = new decimal[] {
                     1.0000M,    -0.6875M,   0.5000M,    -2.0000M,   -0.6875M, 
                     0.3750M,    1.1250M,    2.0625M,    -0.2500M,   -0.5625M, 
                     -2.4375M,   1.7500M,    1.3750M,    -1.0000M };
-                var calculator = new Lib.RSICalculator(14);
+var calculator = new Lib.RSICalculator(14);
 var rsi = calculator.CalculateInitialValue(differences);
 ...
 rsi = calculator.CalculateNextValue(rsi, -1M);

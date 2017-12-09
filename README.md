@@ -1,4 +1,4 @@
-[![NuGet Status](https://img.shields.io/nuget/v/Paket.svg?style=flat)](https://www.nuget.org/packages/RSICalculator.Lib/)
+[![NuGet Info](https://buildstats.info/nuget/RSICalculator.Lib?includePreReleases=true)](https://www.nuget.org/packages/Giraffe/)
 
 # Relative Strength Index (RSI) Calculator 
 Open-source library for calculation of Relative Strength Index, a momentum oscillator for measurement of speed and change in price movements.

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RSICalculator.Lib {
 
@@ -75,6 +76,18 @@ namespace RSICalculator.Lib {
         }
 
         /// <summary>
+        /// Calculates initial RSI value
+        /// </summary>
+        /// <param name="candlesticks">Enumerable array of candlesticks used for calculation.</param>
+        /// <returns>Initial RSI value.</returns>
+        public virtual RSIValue CalculateInitialValue(IEnumerable<Candlestick> candlesticks) {
+            if (null == candlesticks) {
+                throw new ArgumentNullException("candlesticks");
+            }
+            return CalculateInitialValue(candlesticks.Select(c => c.StartEndDifference).ToArray());
+        }
+
+        /// <summary>
         /// Calculates next RSI value from previous
         /// </summary>
         /// <param name="previousRSI">Previous RSI value</param>
@@ -90,6 +103,19 @@ namespace RSICalculator.Lib {
                 Math.Round(((previousRSI.AverageLoss) * (NumberOfSamples - 1) - Math.Min(0, latestDifference)) / NumberOfSamples, PRECISION),
                 PRECISION
             );
+        }
+
+        /// <summary>
+        /// Calculates next RSI value from previous
+        /// </summary>
+        /// <param name="previousRSI">Previous RSI value</param>
+        /// <param name="latestCandlestick">Last candlestick</param>
+        /// <returns>Updated RSI value</returns>
+        public virtual RSIValue CalculateNextValue(RSIValue previousRSI, Lib.Candlestick latestCandlestick) {
+            if (null == latestCandlestick) {
+                throw new ArgumentNullException("candlestick");
+            }
+            return CalculateNextValue(previousRSI, latestCandlestick.StartEndDifference);
         }
 
         #endregion
